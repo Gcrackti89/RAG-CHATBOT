@@ -1,0 +1,41 @@
+# --- Core RAG framework ---
+langchain
+langchain-community
+langchain-core
+langchain-text-splitters
+
+# --- LLM via OpenRouter (OpenAI-compatible API) ---
+langchain-openai
+openai
+
+# --- Embeddings (free, local, no API cost) ---
+# Vector store code uses Qdrant FastEmbed (ONNX-based, light, no torch):
+#   utils/vectorstore.py -> from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
+fastembed
+# langchain-huggingface   # optional: only if you switch to HuggingFaceEmbeddings (pulls torch)
+# sentence-transformers   # optional: only if you switch to HuggingFaceEmbeddings (pulls torch)
+
+# --- Vector store ---
+# Pinned to 0.5.x: chromadb 1.x breaks langchain-community's Chroma wrapper API
+# (it deadlocks on Windows at 0% CPU during vector store creation).
+chromadb==0.5.23
+# faiss-cpu   # alternative to chromadb, uncomment if you prefer FAISS
+
+# --- Document loaders ---
+pypdf              # PDF
+docx2txt           # DOCX
+unstructured       # general purpose (txt, html, md, etc.)
+markdown
+
+# --- Tokenizer / utils ---
+tiktoken
+python-dotenv
+
+# --- Optional: web UI / API ---
+streamlit
+# fastapi
+# uvicorn
+
+# --- Optional: agentic / complex flow (only if needed later) ---
+# langgraph
+# crewai
